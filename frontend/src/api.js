@@ -46,4 +46,9 @@ export const markNotificationsRead = (userId) => api.post(`/notification/mark-re
 export const getAdminStats = () => api.get('/admin/stats');
 export const getAdminUsers = () => api.get('/admin/users');
 
+// Chat
+export const getConversations = () => api.get('/chat/conversations');
+export const getMessages = (convoId) => api.get(`/chat/messages/${convoId}`);
+export const sendMessage = (data) => api.post('/chat/message', data);
+
 export default api;

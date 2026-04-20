@@ -22,6 +22,7 @@ import ProfileSetup from "./pages/ProfileSetup";
 import ExploreAlumni from "./pages/ExploreAlumni";
 import OpportunityBoard from "./pages/OpportunityBoard";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
+import Messages from "./pages/Messages";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           
           <Route path="/opportunities" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><OpportunityBoard /></ProtectedRoute>} />
           <Route path="/analytics" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><AnalyticsDashboard /></ProtectedRoute>} />
+          <Route path="/messages" element={<ProtectedRoute allowedRoles={['student', 'alumni']}><Messages /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

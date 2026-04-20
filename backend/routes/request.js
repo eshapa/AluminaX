@@ -1,12 +1,14 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 const Request = require("../models/Request");
-
 const Notification = require("../models/Notification");
+const Conversation = require("../models/Conversation");
 
 // send request
+// ... (omitted for brevity in instruction but keep original)
 router.post("/send", async (req, res) => {
   try {
-    const { studentId, alumniId } = req.body;
+    const { studentId, alumniId, topic } = req.body;
 
     const existing = await Request.findOne({
       studentId,
@@ -50,20 +52,42 @@ router.get("/student/:studentId", async (req, res) => {
 
 // accept/reject
 router.post("/update/:id", async (req, res) => {
-  const request = await Request.findByIdAndUpdate(
-    req.params.id,
-    { status: req.body.status },
-    { new: true }
-  );
+  try {
+    const { status } = req.body;
+    const request = await Request.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true }
+    );
 
-  // Notify student
-  await Notification.create({
-    userId: request.studentId,
-    type: `REQUEST_${req.body.status.toUpperCase()}`,
-    message: `Your mentorship request has been ${req.body.status}.`
-  });
+    // If accepted, create a conversation
+    if (status === "Accepted") {
+      const studentId = new mongoose.Types.ObjectId(request.studentId);
+      const alumniId = new mongoose.Types.ObjectId(request.alumniId);
 
-  res.send(request);
+      const existingConvo = await Conversation.findOne({
+        participants: { $all: [studentId, alumniId] }
+      });
+
+      if (!existingConvo) {
+        await Conversation.create({
+          participants: [studentId, alumniId]
+        });
+      }
+    }
+
+    // Notify student
+    await Notification.create({
+      userId: request.studentId,
+      type: `REQUEST_${status.toUpperCase()}`,
+      message: `Your mentorship request has been ${status}.`
+    });
+
+    res.send(request);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error updating request.");
+  }
 });
 
 module.exports = router;

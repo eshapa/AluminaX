@@ -162,7 +162,12 @@ export default function AlumniDashboard() {
                             </button>
                           </div>
                         )}
-                        {r.status === 'accepted' && <span className="bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-green-500/30">Active Student</span>}
+                        {r.status === 'accepted' && (
+                          <div className="flex items-center gap-3">
+                            <span className="bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-green-500/30">Active Student</span>
+                            <button onClick={() => window.location.href = "/messages"} className="bg-accent-600/20 hover:bg-accent-600/40 border border-accent-500/30 text-accent-400 py-1.5 px-6 rounded-xl font-bold text-sm transition">Chat</button>
+                          </div>
+                        )}
                         {r.status === 'rejected' && <span className="text-gray-500 font-bold uppercase text-xs tracking-wider">Declined</span>}
                       </motion.div>
                     ))
