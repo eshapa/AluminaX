@@ -1,7 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+<<<<<<< HEAD
 import { FiHome, FiUser, FiBriefcase, FiLogOut, FiActivity } from "react-icons/fi";
+=======
+import { FiHome, FiUser, FiBriefcase, FiLogOut, FiActivity, FiStar } from "react-icons/fi";
+>>>>>>> esha
 
 export default function Sidebar({ role }) {
   const nav = useNavigate();
@@ -16,6 +20,10 @@ export default function Sidebar({ role }) {
     { name: "Dashboard", path: role === "student" ? "/student" : "/alumni", icon: <FiHome size={20} /> },
     { name: "Opportunities", path: "/opportunities", icon: <FiBriefcase size={20} /> },
     { name: "Analytics", path: "/analytics", icon: <FiActivity size={20} /> },
+<<<<<<< HEAD
+=======
+    { name: "Leaderboard", path: "/leaderboard", icon: <FiStar size={20} /> },
+>>>>>>> esha
     { name: "Profile", path: role === "student" ? "/student-profile" : "/alumni-profile", icon: <FiUser size={20} /> }
   ];
 

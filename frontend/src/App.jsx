@@ -23,6 +23,7 @@ import ExploreAlumni from "./pages/ExploreAlumni";
 import OpportunityBoard from "./pages/OpportunityBoard";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 
+import Leaderboard from "./pages/Leaderboard";
 function App() {
   return (
     <BrowserRouter>
@@ -33,16 +34,16 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
           <Route path="/stories" element={<SuccessStories />} />
-          
+
           {/* Onboarding & Auth Routes */}
           <Route path="/roles" element={<RoleSelection />} />
-          
+
           {/* Unified Auth Route */}
           <Route path="/auth/login" element={<AuthEntry />} />
           <Route path="/auth/student" element={<AuthEntry />} />
           <Route path="/auth/alumni" element={<AuthEntry />} />
           <Route path="/auth/admin" element={<AuthEntry />} />
-          
+
           {/* Backward Compatibility mappings */}
           <Route path="/login" element={<Navigate to="/auth/login" replace />} />
           <Route path="/register" element={<Navigate to="/roles" replace />} />
@@ -54,19 +55,23 @@ function App() {
           {/* Protected Dashboard Routes */}
           <Route path="/setup-profile" element={<ProtectedRoute allowedRoles={['student', 'alumni']}><ProfileSetup /></ProtectedRoute>} />
           <Route path="/explore" element={<ProtectedRoute allowedRoles={['student']}><ExploreAlumni /></ProtectedRoute>} />
-          
+
           <Route path="/student" element={<ProtectedRoute allowedRoles={['student']}><StudentDashboard /></ProtectedRoute>} />
           <Route path="/alumni" element={<ProtectedRoute allowedRoles={['alumni']}><AlumniDashboard /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>} />
-          
+
           <Route path="/student-profile" element={<ProtectedRoute allowedRoles={['student']}><StudentProfile /></ProtectedRoute>} />
           <Route path="/alumni-profile" element={<ProtectedRoute allowedRoles={['alumni']}><AlumniProfile /></ProtectedRoute>} />
-          
+
           <Route path="/opportunities" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><OpportunityBoard /></ProtectedRoute>} />
           <Route path="/analytics" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><AnalyticsDashboard /></ProtectedRoute>} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+<<<<<<< HEAD
+=======
+          <Route path="/leaderboard" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><Leaderboard /></ProtectedRoute>} />
+>>>>>>> esha
+        </Routes >
+      </AuthProvider >
+    </BrowserRouter >
   );
 }
 
