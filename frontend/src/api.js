@@ -49,4 +49,9 @@ export const getAdminUsers = () => api.get('/admin/users');
 // Leaderboard
 export const getLeaderboard = () => api.get('/leaderboard');
 
+// Chat
+export const getConversations = () => api.get('/chat/conversations');
+export const getMessages = (convoId) => api.get(`/chat/messages/${convoId}`);
+export const sendMessage = (data) => api.post('/chat/message', data);
+
 export default api;

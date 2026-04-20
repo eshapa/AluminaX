@@ -22,6 +22,7 @@ import ProfileSetup from "./pages/ProfileSetup";
 import ExploreAlumni from "./pages/ExploreAlumni";
 import OpportunityBoard from "./pages/OpportunityBoard";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
+import Messages from "./pages/Messages";
 
 import Leaderboard from "./pages/Leaderboard";
 function App() {
@@ -65,13 +66,11 @@ function App() {
 
           <Route path="/opportunities" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><OpportunityBoard /></ProtectedRoute>} />
           <Route path="/analytics" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><AnalyticsDashboard /></ProtectedRoute>} />
-<<<<<<< HEAD
-=======
+          <Route path="/messages" element={<ProtectedRoute allowedRoles={['student', 'alumni']}><Messages /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute allowedRoles={['student', 'alumni', 'admin']}><Leaderboard /></ProtectedRoute>} />
->>>>>>> esha
-        </Routes >
-      </AuthProvider >
-    </BrowserRouter >
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

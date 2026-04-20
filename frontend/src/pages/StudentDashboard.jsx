@@ -216,7 +216,10 @@ export default function StudentDashboard() {
                               {r.status}
                             </span>
                             {r.status === 'accepted' && (
-                              <button onClick={() => { setActiveRequest(r); setShowSessionModal(true); }} className="bg-dark-700 hover:bg-dark-600 border border-white/10 text-white py-1 px-4 text-xs font-bold rounded-full transition">Schedule</button>
+                              <div className="flex gap-2">
+                                <button onClick={() => { setActiveRequest(r); setShowSessionModal(true); }} className="bg-dark-700 hover:bg-dark-600 border border-white/10 text-white py-1.5 px-4 text-xs font-bold rounded-full transition">Schedule</button>
+                                <button onClick={() => window.location.href = "/messages"} className="bg-primary-600/20 hover:bg-primary-600/40 border border-primary-500/30 text-primary-400 py-1.5 px-4 text-xs font-bold rounded-full transition">Message</button>
+                              </div>
                             )}
                           </div>
                         </div>

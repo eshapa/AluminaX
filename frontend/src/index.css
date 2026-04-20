@@ -192,3 +192,18 @@
 .reveal-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.35s; }
 .reveal-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.45s; }
 .reveal-children.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.55s; }
+
+/* ─── Chat Scrollbar ──────────────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
