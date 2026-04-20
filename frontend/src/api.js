@@ -46,4 +46,7 @@ export const markNotificationsRead = (userId) => api.post(`/notification/mark-re
 export const getAdminStats = () => api.get('/admin/stats');
 export const getAdminUsers = () => api.get('/admin/users');
 
+// Leaderboard
+export const getLeaderboard = () => api.get('/leaderboard');
+
 export default api;

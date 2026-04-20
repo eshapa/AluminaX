@@ -18,5 +18,6 @@ app.use("/api/opportunity", require("./routes/opportunity"));
 app.use("/api/session", require("./routes/session"));
 app.use("/api/notification", require("./routes/notification"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/leaderboard", require("./routes/leaderboard"));
 
 app.listen(5000, () => console.log("Server running"));
